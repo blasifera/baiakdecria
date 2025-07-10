@@ -1,0 +1,21 @@
+----- 04/09/2016 14:54:36 - ADM Joga Sem Dedo (127.0.0.1) -----
+Comment: 
+Graphic Engine: DirectX9 (2)
+Operating System: Windows Vista Family in BRA
+Processor: Quad Core AMD FX -4300
+Video Card: NVIDIA GeForce GT 630
+Last Packet Types: 106 180 131 131 131 131 131 160 140 160
+Last Packet: 180 018 012 000 047 109 032 065 099 105 100 032 066 108 111 098
+Player Position: [155,58,7]
+Player Name: ADM Joga Sem Dedo (Baiak Zik)
+Player Action: 049 050 055 046 048 046 048 046 049 058 055 049 055 050
+Player.cpp 361: exception occurred, reason:
+Network.cpp 946: exception occurred (ErrorCode = 0), reason:
+Control.cpp 1331: exception occurred (Type = 106) (MainWindow = 9273176), reason:
+Communication.cpp 1784: exception occurred (rx = 9) (ry = 6), reason:
+Communication.cpp 1592: exception occurred (Type = 97) (CreatureID = 1073771299), reason:
+Objects.cpp 604: exception occurred (Number = 7172), reason:
+Container.h 226: index out of range (original i: 7172, i: 7171, min: 1, d: 367)
+Sun Sep 04 14:17:56 2016
+Debug Assertion 8.60 Container.h 226
+
