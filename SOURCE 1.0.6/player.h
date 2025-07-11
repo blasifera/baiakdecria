@@ -208,7 +208,7 @@ class Player : public Creature, public Cylinder
 				if(it->second->getViewerName() == n && it->second->getPlayer() == this)
 					return it->second->getIP();
 
-			return NULL;
+			return 0;
 		}
 
 		uint32_t getCastViewerCount() {
