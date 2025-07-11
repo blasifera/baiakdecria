@@ -2954,10 +2954,14 @@ void ProtocolGame::AddCreatureSpeak(NetworkMessage_ptr msg, const Creature* crea
 		}
 
 		if(speaker && type != SPEAK_RVR_ANSWER && !speaker->isAccountManager()
-			&& !speaker->hasCustomFlag(PlayerCustomFlag_HideLevel) && (pg == NULL || (pg != NULL && !pg->getIsCast()))
+		&& !speaker->hasCustomFlag(PlayerCustomFlag_HideLevel) && (pg == NULL || (pg != NULL && !pg->getIsCast())))
+		{
 			msg->put<uint16_t>(speaker->getPlayerInfo(PLAYERINFO_LEVEL));
+		}
 		else
+		{
 			msg->put<uint16_t>(0x00);
+		}
 
 	}
 	else
