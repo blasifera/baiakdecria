@@ -150,7 +150,7 @@ Player::~Player()
 		it->second.first->unRef();
 }
 
-void const Player::setCasting(bool c) //CA
+void Player::setCasting(bool c) //CA
 {
 	if(cast.isCasting == c)
 		return;
