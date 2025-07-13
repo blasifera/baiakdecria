@@ -3964,9 +3964,12 @@ bool Game::playerTalkToChannel(Player* player, SpeakClasses type, const std::str
 		{
 			if(channelId == CHANNEL_HELP && player->hasFlag(PlayerFlag_TalkOrangeHelpChannel))
 				type = SPEAK_CHANNEL_O;
-			
-			if(g_chat.getPrivateChannel(player) != NULL && channelId == g_chat.getPrivateChannel(player)->getId() && (pg == NULL || pg != NULL && !pg->getIsCast())) //CA
+			if(g_chat.getPrivateChannel(player) != NULL &&
+			channelId == g_chat.getPrivateChannel(player)->getId() &&
+			(pg == NULL || (pg != NULL && !pg->getIsCast()))) //CA
+			{
 				type = SPEAK_CHANNEL_O; //CA
+			}
 				
 			break;
 		}

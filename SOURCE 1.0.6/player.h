@@ -246,7 +246,7 @@ class Player : public Creature, public Cylinder
 			if(!ip)
 				return false;
 
-			cast.bans.push_back(CastBan::CastBan(n, ip));
+			cast.bans.push_back(CastBan(n, ip));
 			kickCastViewerByName(n);
 			return true;
 		}
@@ -267,7 +267,7 @@ class Player : public Creature, public Cylinder
 			if(!ip)
 				return false;
 
-			cast.muted.push_back(CastBan::CastBan(n, ip));
+			cast.muted.push_back(CastBan(n, ip));
 			return true;
 		}
 
