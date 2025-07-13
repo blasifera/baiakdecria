@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<npc name="Donate Seller" script="data/npc/scripts/donate.lua" walkinterval="2000" floorchange="0">
+	<health now="100" max="100"/>
+	<look type="130" head="0" body="144" legs="144" feet="0" addons="3"/>
+	<parameters>
+		<parameter key="module_shop" value="1"/>
+		<parameter key="shop_buyable" value="Donate Slingshot,5907,40000000;Donate Axe,10943,40000000;Donate Sword,8980,40000000;Donate Staff,12279,40000000;Donate Club,12574,40000000;Donate Hat,10569,40000000;Donate Cape,12392,40000000;Donate Shorts,11349,40000000;Super Boots,2644,40000000;Donate Spellbook,8983,40000000;Donate Shield,2537,40000000;Donate Helmet,12617,40000000;Donate Armor,11350,40000000;Donate Legs,11298,40000000;Premium 1 Dia,10311,5000000;Premium 15 Dias,10310,10000000;Premium 30 Dias,10309,20000000;Double Exp Potion,7440,10000000;Skulls Potion,7443,10000000"/>
+	</parameters>
+1</npc>
