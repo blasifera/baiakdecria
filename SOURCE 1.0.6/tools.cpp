@@ -16,7 +16,7 @@
 ////////////////////////////////////////////////////////////////////////
 #include "otpch.h"
 #include "tools.h"
-
+#include <sys/time.h>
 #include <iostream>
 #include <iomanip>
 
@@ -759,39 +759,46 @@ std::string formatDateEx(time_t _time/* = 0*/, std::string format/* = "%d %b %Y,
 
 std::string formatTime(time_t _time/* = 0*/, bool ms/* = false*/)
 {
-	if(!_time)
-		_time = time(NULL);
-	else if(ms)
-		ms = false;
+    if(!_time)
+        _time = time(NULL);
+    else if(ms)
+        ms = false;
 
-	const tm* tms = localtime(&_time);
-	std::stringstream s;
-	if(tms)
-	{
-		s << tms->tm_hour << ":" << tms->tm_min << ":";
-		if(tms->tm_sec < 10)
-			s << "0";
+    const tm* tms = localtime(&_time);
+    std::stringstream s;
 
-		s << tms->tm_sec;
-		if(ms)
-		{
-			timeb t;
-			ftime(&t);
+    if(tms)
+    {
+        s << tms->tm_hour << ":" << tms->tm_min << ":";
+        if(tms->tm_sec < 10)
+            s << "0";
 
-			s << "."; // make it format zzz
-			if(t.millitm < 10)
-				s << "0";
+        s << tms->tm_sec;
 
-			if(t.millitm < 100)
-				s << "0";
+        if(ms)
+        {
+#ifdef _WIN32
+            struct _timeb t;
+            _ftime(&t);
+            int millis = t.millitm;
+#else
+            struct timeval tv;
+            gettimeofday(&tv, NULL);
+            int millis = tv.tv_usec / 1000;
+#endif
+            s << ".";
+            if(millis < 10)
+                s << "0";
+            if(millis < 100)
+                s << "0";
 
-			s << t.millitm;
-		}
-	}
-	else
-		s << "UNIX Time: " << (int32_t)_time;
+            s << millis;
+        }
+    }
+    else
+        s << "UNIX Time: " << (int32_t)_time;
 
-	return s.str();
+    return s.str();
 }
 
 std::string convertIPAddress(uint32_t ip)
