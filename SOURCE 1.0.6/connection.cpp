@@ -320,7 +320,7 @@ void Connection::accept()
 	try
 	{
 		++m_pendingRead;
-		m_readTimer.expires_from_now(boost::posix_time::seconds(Connection::readTimeout));
+		m_readTimer.expires_from_now(boost::posix_time::seconds(static_cast<int>(Connection::readTimeout)));
 		m_readTimer.async_wait(boost::bind(&Connection::handleReadTimeout,
 			boost::weak_ptr<Connection>(shared_from_this()), boost::asio::placeholders::error));
 
@@ -360,7 +360,7 @@ void Connection::parseHeader(const boost::system::error_code& error)
 	try
 	{
 		++m_pendingRead;
-		m_readTimer.expires_from_now(boost::posix_time::seconds(Connection::readTimeout));
+		m_readTimer.expires_from_now(boost::posix_time::seconds(static_cast<int>(Connection::readTimeout)));
 		m_readTimer.async_wait(boost::bind(&Connection::handleReadTimeout,
 			boost::weak_ptr<Connection>(shared_from_this()), boost::asio::placeholders::error));
 
@@ -436,7 +436,7 @@ void Connection::parsePacket(const boost::system::error_code& error)
 	try
 	{
 		++m_pendingRead;
-		m_readTimer.expires_from_now(boost::posix_time::seconds(Connection::readTimeout));
+		m_readTimer.expires_from_now(boost::posix_time::seconds(static_cast<int>(Connection::readTimeout)));
 		m_readTimer.async_wait(boost::bind(&Connection::handleReadTimeout,
 			boost::weak_ptr<Connection>(shared_from_this()), boost::asio::placeholders::error));
 

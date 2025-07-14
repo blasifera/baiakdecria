@@ -1140,7 +1140,7 @@ ChatChannel* Chat::getChannel(Player* player, uint16_t channelId)
 	std::clog << "Chat::getChannel - getChannel id " << channelId << std::endl;
 	#endif
 	if(!player || player->isRemoved())
-		return false;
+		return nullptr;
 
 	if(channelId == CHANNEL_GUILD)
 	{
