@@ -18,7 +18,7 @@
 #ifndef __OTSYSTEM__
 #define __OTSYSTEM__
 #include "definitions.h"
-
+#include <sys/time.h>
 #include <string>
 #include <algorithm>
 #include <bitset>
@@ -111,9 +111,9 @@
 
 inline int64_t OTSYS_TIME()
 {
-	timeb t;
-	ftime(&t);
-	return ((int64_t)t.millitm) + ((int64_t)t.time) * 1000;
+    timeval tv;
+    gettimeofday(&tv, NULL);
+    return ((int64_t)tv.tv_sec) * 1000 + (tv.tv_usec / 1000);
 }
 
 inline uint32_t swap_uint32(uint32_t val)
