@@ -42,7 +42,7 @@
 	autoBanishUnknownBytes = false 
 
 
-	worldType = "pvp"
+	worldType = "1"
 	protectionLevel = 80
 	pvpTileIgnoreLevelAndVocationProtection = true
 	pzLocked = 20 * 700
@@ -144,7 +144,7 @@
 	maximumDoorLevel = 500
 
 
-	mapName = "baiakdecria"
+	mapName = "baiakdecria.otbm"
 	mapAuthor = "DeathRocks TibiaKing"
 	randomizeTiles = true
 	useHouseDataStorage = false
