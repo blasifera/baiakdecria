@@ -119,17 +119,16 @@ void GlobalEvents::timer()
 
 void GlobalEvents::think()
 {
-	std::clog << "[Debug] think() " 
-          << "event: " << it->second->getName()
-          << " now: " << now 
-          << " lastExecution: " << it->second->getLastExecution()
-          << " interval: " << it->second->getInterval()
-          << " sum: " << (it->second->getLastExecution() + it->second->getInterval())
-          << std::endl;
-
 	int64_t now = OTSYS_TIME();
 	for(GlobalEventMap::iterator it = thinkMap.begin(); it != thinkMap.end(); ++it)
 	{
+		std::clog << "[Debug] think() " 
+		<< "event: " << it->second->getName()
+		<< " now: " << now 
+		<< " lastExecution: " << it->second->getLastExecution()
+		<< " interval: " << it->second->getInterval()
+		<< " sum: " << (it->second->getLastExecution() + it->second->getInterval())
+		<< std::endl;
 		if((it->second->getLastExecution() + it->second->getInterval()) > now)
 			continue;
 
