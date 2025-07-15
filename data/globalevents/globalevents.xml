@@ -1,26 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <globalevents>
-    <!-- Eventos onThink -->
-    <globalevent name="save" interval="10000" type="think" script="save.lua"/>
-    <globalevent name="clean" interval="2000" type="think" script="clean.lua"/>
-    <globalevent name="info" interval="6000" type="think" script="info.lua"/>
-    <globalevent name="magia" interval="1000" type="think" script="magia.lua"/>
-    <globalevent name="info2" interval="4000" type="think" script="info2.lua"/>
-    <globalevent name="info3" interval="2000" type="think" script="info3.lua"/>
-    <globalevent name="saveplayer" interval="3500" type="think" script="saveplayer.lua"/>
-    <globalevent name="rain" interval="5000" type="think" script="rain.lua"/>
-    <globalevent name="ZombieGlobalThink" interval="5000" type="think" script="zombie/onthink.lua"/>
-    <globalevent name="invasion" interval="6000" type="think" script="invasion.lua"/>
-    <globalevent name="lottery" interval="14400000" type="think" script="lottery.lua"/>
-    <globalevent name="offtrain_add_minutes" interval="6000" type="think" script="offtrain_addMinutes.lua"/>
-    <globalevent name="talkactions" interval="2000" type="think" script="talkactions.lua"/>
-    <globalevent name="GuildFrags" interval="1800000" type="think" script="GuildFragsInfo.lua"/>
-    <globalevent name="info_" interval="1200" type="think" script="info_.lua"/>
-    <globalevent name="tps" interval="5000" type="think" script="tps.lua"/>
+    <globalevent name="save" interval="10000" event="script" value="save.lua"/>
+    <globalevent name="clean" interval="2000" event="script" value="clean.lua"/>
+    <globalevent name="info" interval="6000" event="script" value="info.lua"/>
+    <globalevent name="magia" interval="1000" event="script" value="magia.lua"/> <!-- era 1 -->
+    <globalevent name="info2" interval="4000" event="script" value="info2.lua"/>
+    <globalevent name="info3" interval="2000" event="script" value="info3.lua"/>
+    <globalevent name="saveplayer" interval="3500" event="script" value="saveplayer.lua"/>
+    <globalevent name="rain" interval="5000" event="script" value="rain.lua"/> <!-- era 0 -->
+    <globalevent name="ZombieGlobalThink" interval="5000" event="script" value="zombie/onthink.lua"/> <!-- era 5 -->
+    <globalevent name="ZombieGlobalStartup" type="start" event="script" value="zombie/onstartup.lua"/>
+    <globalevent name="invasion" interval="6000" event="script" value="invasion.lua"/>
+    <globalevent name="lottery" interval="14400" event="script" value="lottery.lua"/> <!-- corrigido script->event -->
+    <globalevent name="offtrain_add_minutes" interval="6000" event="script" value="offtrain_addMinutes.lua"/>
+    <globalevent name="serverstart" type="start" event="script" value="start.lua"/>
+    <globalevent name="playersrecord" type="record" event="script" value="record.lua"/>
+    <globalevent name="talkactions" interval="2000" event="script" value="talkactions.lua"/>
+    <globalevent name="GuildFrags" interval="1800" event="script" value="GuildFragsInfo.lua"/>   
+    <globalevent name="info4" interval="1200" event="script" value="info.lua"/> <!-- info, corrigido -->
+    <globalevent name="tps" interval="5000" event="script" value="tps.lua"/> <!-- era 0, corrigido script->event -->
 
-    <!-- Eventos onStartup -->
-    <globalevent name="ZombieGlobalStartup" type="startup" script="zombie/onstartup.lua"/>
-    <globalevent name="serverstart" type="startup" script="start.lua"/>
-
-    <!-- Players record -->
-    <globalevent name="playersrecord" type="record" script="record.lua"/>
+    <!-- Exemplo de evento por horário fixo, comentado -->
+    <!-- <globalevent name="timer_example" time="21:35:00" event="script" value="my_script.lua"/> -->
 </globalevents>
