@@ -1,6 +1,6 @@
 function onStartup(interval)
 
-		 db.executeQuery("UPDATE `player_storage` SET `value` = 0 WHERE `key` = " .. ZE_isOnZombieArea .. ";")
+		 db.query("UPDATE `player_storage` SET `value` = 0 WHERE `key` = " .. ZE_isOnZombieArea .. ";")
 
 		 doSetStorage(ZE_STATUS, 0)
 
