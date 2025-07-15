@@ -131,7 +131,7 @@ void GlobalEvents::think()
 				<< it->second->getName() << std::endl;
 	}
 
-	Scheduler::getInstance().addEvent(createSchedulerTask(SCHEDULER_MINTICKS,
+	Scheduler::getInstance().addEvent(createSchedulerTask(1000,
 		boost::bind(&GlobalEvents::think, this)));
 }
 
