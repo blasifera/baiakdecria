@@ -71,7 +71,7 @@
 	allowFightback = true
 	worldId = 0
 
-	ip = "baiakdecria.servegame.com"
+	ip = "177.153.50.38"
 	bindOnlyConfiguredIpAddress = false
 	loginPort = 7171
 	gamePort = 7172
