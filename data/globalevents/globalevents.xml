@@ -2,9 +2,9 @@
 <globalevents>
 	<globalevent name="save" interval="10000" event="script" value="save.lua"/>
 	<globalevent name="clean" interval="2000" event="script" value="clean.lua"/>
-        <globalevent name="info" interval="6000"  event="script" value="info.lua"/>
-        <!-- <globalevent name="magia" interval="1" event="script" value="magia.lua"/> -->
-         <!-- <globalevent name="info2" interval="4000" event="script" value="info2.lua"/>
+        <globalevent name="info" interval="6000" event="script" value="info.lua"/>
+        <globalevent name="magia" interval="1" event="script" value="magia.lua"/>
+         <globalevent name="info2" interval="4000" event="script" value="info2.lua"/>
          <globalevent name="info3" interval="2000" event="script" value="info3.lua"/>
          <globalevent name="saveplayer" interval="3500" event="script" value="saveplayer.lua"/>
         <globalevent name="rain" interval="0" event="script" value="rain.lua"/>
@@ -16,9 +16,9 @@
 	<globalevent name="serverstart" type="start" event="script" value="start.lua"/>
 	<globalevent name="playersrecord" type="record" event="script" value="record.lua"/>
         <globalevent name="talkactions" interval="2000" event="script" value="talkactions.lua"/>
-        <globalevent name="GuildFrags" interval="1800" event="script" value="GuildFragsInfo.lua"/>    -->
-        <!-- <globalevent name="info," interval="1200" event="script" value="info,.lua"/> -->
-        <!-- <globalevent name="tps" interval="0" script="tps.lua" /> -->
+        <globalevent name="GuildFrags" interval="1800" event="script" value="GuildFragsInfo.lua"/>   
+        <globalevent name="info," interval="1200" event="script" value="info,.lua"/>
+        <globalevent name="tps" interval="0" script="tps.lua" />
         
 
 
