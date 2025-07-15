@@ -144,7 +144,7 @@
 	maximumDoorLevel = 500
 
 
-	mapName = "baiakdecria.otbm"
+	mapName = "Baiak Yurots.otbm"
 	mapAuthor = "DeathRocks TibiaKing"
 	randomizeTiles = true
 	useHouseDataStorage = false
