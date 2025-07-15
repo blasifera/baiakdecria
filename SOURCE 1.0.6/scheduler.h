@@ -20,7 +20,7 @@
 #include "otsystem.h"
 
 #include "dispatcher.h"
-#define SCHEDULER_MINTICKS 50
+#define SCHEDULER_MINTICKS 1000
 
 class SchedulerTask : public Task
 {
