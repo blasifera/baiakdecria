@@ -96,6 +96,17 @@ void GlobalEvents::startup()
 		boost::bind(&GlobalEvents::timer, this)));
 	Scheduler::getInstance().addEvent(createSchedulerTask(SCHEDULER_MINTICKS,
 		boost::bind(&GlobalEvents::think, this)));
+
+	// Agora agende todos os eventos do tipo think que possuem interval > 0
+	for(GlobalEventMap::iterator it = thinkMap.begin(); it != thinkMap.end(); ++it)
+	{
+		GlobalEvent* event = it->second;
+		if(event->getEventType() == GLOBALEVENT_THINK && event->getInterval() > 0)
+		{
+			g_scheduler.addEvent(createSchedulerTask(event->getInterval(),
+				std::bind(&GlobalEvent::executeThink, event)));
+		}
+	}
 }
 
 void GlobalEvents::timer()
@@ -135,6 +146,7 @@ void GlobalEvents::think()
 		boost::bind(&GlobalEvents::think, this)));
 }
 
+
 void GlobalEvents::execute(GlobalEvent_t type)
 {
 	for(GlobalEventMap::iterator it = serverMap.begin(); it != serverMap.end(); ++it)
@@ -149,8 +161,9 @@ GlobalEventMap GlobalEvents::getEventMap(GlobalEvent_t type)
 	switch(type)
 	{
 		case GLOBALEVENT_NONE:
+			return GlobalEventMap(); 
+		case GLOBALEVENT_THINK:
 			return thinkMap;
-
 		case GLOBALEVENT_TIMER:
 			return timerMap;
 
@@ -205,6 +218,8 @@ bool GlobalEvent::configureEvent(xmlNodePtr p)
 			m_eventType = GLOBALEVENT_GLOBALSAVE;
 		else if(tmpStrValue == "record" || tmpStrValue == "playersrecord")
 			m_eventType = GLOBALEVENT_RECORD;
+		else if(tmpStrValue == "think")
+			m_eventType = GLOBALEVENT_THINK;
 		else
 		{
 			std::clog << "[Error - GlobalEvent::configureEvent] No valid type \"" << strValue << "\" for globalevent with name " << m_name << std::endl;
@@ -348,6 +363,31 @@ int32_t GlobalEvent::executeRecord(uint32_t current, uint32_t old, Player* playe
 		return 0;
 	}
 }
+
+bool GlobalEvent::executeThink()
+{
+	if(!m_interface || m_scriptId == 0)
+		return false;
+
+	lua_State* L = m_interface->getState();
+	m_interface->reserveEnv();
+	ScriptEnviroment* env = m_interface->getEnv();
+
+	env->setScriptId(m_scriptId, m_interface);
+	env->setTimerEvent();
+
+	lua_rawgeti(L, LUA_REGISTRYINDEX, m_scriptId);
+
+	if(lua_pcall(L, 0, 0, 0) != 0)
+	{
+		m_interface->reportError(nullptr, LuaInterface::popString(L));
+	}
+
+	// Reagenda o próximo think
+	g_scheduler.addEvent(createSchedulerTask(m_interval, std::bind(&GlobalEvent::executeThink, this)));
+	return true;
+}
+
 
 int32_t GlobalEvent::executeEvent()
 {
