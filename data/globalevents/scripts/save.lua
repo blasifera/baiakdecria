@@ -1,38 +1,11 @@
 local config = {
-	broadcast = {120, 30},
-	shallow = "no",
-	delay = 120,
-	events = 30
+	shallow = "no"
 }
 
 config.shallow = getBooleanFromString(config.shallow)
 
-local function executeSave(seconds)
-	if(isInArray(config.broadcast, seconds)) then
-		local text = ""
-		if(not config.shallow) then
-			text = "Full s"
-		else
-			text = "S"
-		end
-
-		text = text .. "erver Vai Ser Salvo Em " .. seconds .. " Seg, Save Server!"
-		doBroadcastMessage(text)
-	end
-
-	if(seconds > 0) then
-		addEvent(executeSave, config.events * 1, seconds - config.events)
-	else
-		doSaveServer(config.shallow)
-	end
-end
-
-function onThink(interval, lastExecution, thinkInterval)
-	if(table.maxn(config.broadcast) == 0) then
-		doSaveServer(config.shallow)
-	else
-		executeSave(config.delay)
-	end
-
+function onThink(interval, lastExecution)
+	doBroadcastMessage("Server save automático acontecendo agora!")
+	doSaveServer(config.shallow)
 	return true
 end
