@@ -251,7 +251,7 @@ bool GlobalEvent::configureEvent(xmlNodePtr p)
 	int32_t intValue;
 	if(readXMLInteger(p, "interval", intValue))
 	{
-		m_interval = std::max((int32_t)SCHEDULER_MINTICKS, intValue);
+		m_interval = std::max((int32_t)SCHEDULER_MINTICKS, intValue * 1000);
 		return true;
 	}
 
