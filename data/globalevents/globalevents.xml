@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <globalevents>
-        <globalevent name="save" interval="10000" event="script" value="save.lua" type="think"/>
-        <globalevent name="clean" interval="2000" event="script" value="clean.lua" type="think"/>
-        <globalevent name="info" interval="6000" event="script" value="info.lua" type="think"/>
-
+	<globalevent name="save" interval="10000" event="script" value="save.lua"/>
+	<globalevent name="clean" interval="2000" event="script" value="clean.lua"/>
+        <globalevent name="info" interval="6000" type="think" event="script" value="info.lua"/>
         <!-- <globalevent name="magia" interval="1" event="script" value="magia.lua"/> -->
          <!-- <globalevent name="info2" interval="4000" event="script" value="info2.lua"/>
          <globalevent name="info3" interval="2000" event="script" value="info3.lua"/>
